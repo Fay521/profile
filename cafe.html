@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lightの咖啡厅 | Light's Cafe</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 引入Google字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A67C52',    // 咖啡色
+            secondary: '#F9A8D4',  // 粉色
+            accent: '#FFC857',     // 金色
+            dark: '#2A2A48',
+            light: '#FFF9F0'       // 奶油色背景
+          },
+          fontFamily: {
+            nunito: ['Nunito', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      .animate-pulse-slow {
+        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #FFF9F0 0%, #F5E6D8 100%);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(166, 124, 82, 0.15);
+      }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+
+<body class="font-nunito bg-light text-dark min-h-screen">
+  <!-- 语言切换按钮 -->
+  <div class="fixed top-6 right-6 z-50 flex gap-2">
+    <button id="zhBtn" class="px-4 py-2 rounded-full bg-primary text-white shadow-md hover:bg-primary/90 transition-all">中文</button>
+    <button id="enBtn" class="px-4 py-2 rounded-full bg-white text-primary shadow-md hover:bg-gray-100 transition-all">English</button>
+  </div>
+
+  <!-- 顶部装饰元素 -->
+  <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -mr-32 -mt-32 z-0"></div>
+  <div class="absolute top-20 left-10 w-32 h-32 bg-secondary/10 rounded-full z-0"></div>
+  
+  <div class="container mx-auto px-4 py-12 relative z-10">
+    <!-- 页面标题 -->
+    <header class="text-center mb-16">
+       <h1 class="text-[clamp(1.6rem,4vw,3rem)] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-4" data-i18n="pageTitle">
+         阳阳の咖啡厅
+       </h1>
+       <div class="w-24 h-1 bg-accent mx-auto rounded-full"></div>
+    </header>
+    
+    <!-- 主要内容 -->
+    <main class="max-w-5xl mx-auto">
+      <!-- 咖啡厅介绍区域 -->
+      <section class="flex flex-col md:flex-row gap-8 mb-16 items-center">
+        <!-- 咖啡厅Logo -->
+        <div class="relative">
+          <div class="w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-white shadow-xl animate-float">
+            <img src="./img/cafe.jpg" alt="咖啡厅Logo" class="w-full h-full object-cover">
+          </div>
+          <!-- 咖啡杯装饰元素 -->
+          <div class="absolute -bottom-3 -right-3 bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg animate-pulse-slow">
+            <i class="fa fa-coffee text-lg"></i>
+          </div>
+        </div>
+        
+        <!-- 咖啡厅简介 -->
+        <div class="text-center md:text-left">
+          <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-3" data-i18n="welcome">欢迎光临</h2>
+           <p class="text-lg text-secondary mb-6" data-i18n="cafeSlogan">一个温暖的避风港 | 治愈系咖啡厅</p>
+           
+           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+             <div class="flex items-center gap-3">
+               <i class="fa fa-map-marker text-primary text-xl w-8"></i>
+               <span data-i18n="location">二次元世界的角落</span>
+             </div>
+             <div class="flex items-center gap-3">
+               <i class="fa fa-clock-o text-primary text-xl w-8"></i>
+               <span data-i18n="openTime">24h 随时欢迎光临</span>
+             </div>
+             <div class="flex items-center gap-3">
+               <i class="fa fa-heart text-primary text-xl w-8"></i>
+               <span data-i18n="warmCare">充满温暖与关怀</span>
+             </div>
+             <div class="flex items-center gap-3">
+               <i class="fa fa-users text-primary text-xl w-8"></i>
+               <span data-i18n="makeFriends">结交志同道合的朋友</span>
+             </div>
+          </div>
+          
+          <!-- 社交媒体链接 - 已注释掉 -->
+          <!--
+          <div class="flex justify-center md:justify-start gap-4">
+            <a href="https://x.com/Kiss_light233" class="w-10 h-10 rounded-full bg-[#1DA1F2]/10 flex items-center justify-center text-[#1DA1F2] hover:bg-[#1DA1F2] hover:text-white transition-all" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="https://t.me/yourusername" class="w-10 h-10 rounded-full bg-[#0088cc]/10 flex items-center justify-center text-[#0088cc] hover:bg-[#0088cc] hover:text-white transition-all" title="Telegram">
+              <i class="fa fa-telegram"></i>
+            </a>
+            <a href="https://space.bilibili.com/1263726273?spm_id_from=333.6.0.0" class="w-10 h-10 rounded-full bg-[#FB7299]/10 flex items-center justify-center hover:bg-[#FB7299] transition-all" title="Bilibili">
+               <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/bilibili.svg" alt="Bilibili" class="w-5 h-5 text-[#FB7299] group-hover:text-white transition-colors">
+            </a>
+          </div>
+          -->
+        </div>
+      </section>
+      
+      <!-- 咖啡厅简介 -->
+      <section class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+          <h2 class="text-2xl font-bold mb-4 text-primary" data-i18n="aboutCafe">关于我们的咖啡厅</h2>
+           <div class="space-y-4 text-gray-700">
+             <p data-i18n="intro1">欢迎哥哥姐姐们来到阳阳的咖啡厅！！！</p>
+             <p data-i18n="intro2">如果，在三次元中感到难受，烦恼，无助的时候~随时都来找咖啡厅里的大家倾诉哦！</p>
+             <p data-i18n="intro3">大家如果状态很棒的话，可以在这里交流一些日常~游戏~或者分享一些有趣的事情！</p>
+             <p data-i18n="intro4">毕竟..咖啡厅吸收大家都负能量也是需要开心快乐的能量作为燃料运作的嘛~</p>
+             <p data-i18n="intro5">阳阳人很好哦~（自夸ing）所以如果，有什么问题或者建议的话可以直接和阳阳交流哦www，阳阳都会认真听取的~</p>
+             <p data-i18n="intro6">最后...再次欢迎大家光顾这个咖啡厅~嘿嘿..</p>
+           </div>
+        </div>
+      </section>
+      
+      <!-- 咖啡厅特色 -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold mb-6 text-center" data-i18n="cafeFeatures">咖啡厅特色</h2>
+         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+           <!-- 特色1 -->
+           <div class="bg-white rounded-xl shadow-md p-4 card-hover">
+             <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+               <i class="fa fa-comments text-primary text-2xl"></i>
+             </div>
+             <h3 class="text-lg font-bold text-center mb-2" data-i18n="sharingFeature">倾诉与分享</h3>
+             <p class="text-gray-600 text-center" data-i18n="sharingDesc">无论是烦恼还是快乐，都可以在这里分享</p>
+           </div>
+           
+           <!-- 特色2 -->
+           <div class="bg-white rounded-xl shadow-md p-4 card-hover">
+             <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+               <i class="fa fa-gamepad text-primary text-2xl"></i>
+             </div>
+             <h3 class="text-lg font-bold text-center mb-2" data-i18n="gamingFeature">游戏交流</h3>
+             <p class="text-gray-600 text-center" data-i18n="gamingDesc">分享游戏心得，一起组队开黑</p>
+           </div>
+           
+           <!-- 特色3 -->
+           <div class="bg-white rounded-xl shadow-md p-4 card-hover">
+             <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+               <i class="fa fa-heart text-primary text-2xl"></i>
+             </div>
+             <h3 class="text-lg font-bold text-center mb-2" data-i18n="healingFeature">温暖治愈</h3>
+             <p class="text-gray-600 text-center" data-i18n="healingDesc">在这里找到温暖和治愈，远离三次元的烦恼</p>
+           </div>
+        </div>
+      </section>
+      
+      <!-- 加入我们 -->
+      <section class="mb-16">
+        <div class="bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl p-8 text-center">
+          <h2 class="text-2xl font-bold mb-4" data-i18n="joinUs">加入我们的咖啡厅</h2>
+          <p class="mb-6 max-w-2xl mx-auto" data-i18n="joinDesc">无论你是想寻找一个倾诉的地方，还是想结交新朋友，或者只是想找个地方放松一下，我们的咖啡厅都欢迎你的到来！</p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://t.me/+Hxoevzfw8e84Nzdl" class="inline-block px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-all shadow-md">
+              <i class="fa fa-telegram mr-2"></i><span data-i18n="telegramChannel">Telegram 频道</span>
+            </a>
+            <a href="https://qm.qq.com/cgi-bin/qm/qr?k=1025172893" class="inline-block px-6 py-3 bg-[#12B7F5] text-white rounded-full font-bold hover:bg-[#12B7F5]/90 transition-all shadow-md">
+              <i class="fa fa-qq mr-2"></i><span data-i18n="qqGroup">QQ 群聊</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="text-center text-gray-500 mt-20">
+      <p data-i18n="footerCopyright">© 2023 Lightの咖啡厅 - 一个充满温暖的避风港</p>
+      <p class="mt-2">
+        <a href="index.html" class="text-primary hover:underline" data-i18n="backToProfile">返回个人主页</a>
+      </p>
+    </footer>
+  </div>
+  
+  <!-- 底部装饰元素 -->
+  <div class="fixed bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full -ml-32 -mb-32 z-0"></div>
+  
+  <!-- 语言切换脚本 -->
+  <script>
+    // 语言数据
+    const translations = {
+      zh: {
+        pageTitle: "Lightの咖啡厅",
+        welcome: "欢迎光临",
+        cafeSlogan: "一个温暖的避风港 | 治愈系咖啡厅",
+        location: "二次元世界的角落",
+        openTime: "24h 随时欢迎光临",
+        warmCare: "充满温暖与关怀",
+        makeFriends: "结交志同道合的朋友",
+        aboutCafe: "关于我们的咖啡厅",
+        intro1: "欢迎哥哥姐姐们来到阳阳的咖啡厅！！！",
+        intro2: "如果，在三次元中感到难受，烦恼，无助的时候~随时都来找咖啡厅里的大家倾诉哦！",
+        intro3: "大家如果状态很棒的话，可以在这里交流一些日常~游戏~或者分享一些有趣的事情！",
+        intro4: "毕竟..咖啡厅吸收大家都负能量也是需要开心快乐的能量作为燃料运作的嘛~",
+        intro5: "阳阳人很好哦~（自夸ing）所以如果，有什么问题或者建议的话可以直接和阳阳交流哦www，阳阳都会认真听取的~",
+        intro6: "最后...再次欢迎大家光顾这个咖啡厅~嘿嘿..",
+        cafeFeatures: "咖啡厅特色",
+        sharingFeature: "倾诉与分享",
+        sharingDesc: "无论是烦恼还是快乐，都可以在这里分享",
+        gamingFeature: "游戏交流",
+        gamingDesc: "分享游戏心得，一起组队开黑",
+        healingFeature: "温暖治愈",
+        healingDesc: "在这里找到温暖和治愈，远离三次元的烦恼",
+        joinUs: "加入我们的咖啡厅",
+        joinDesc: "无论你是想寻找一个倾诉的地方，还是想结交新朋友，或者只是想找个地方放松一下，我们的咖啡厅都欢迎你的到来！",
+        telegramChannel: "Telegram 频道",
+        qqGroup: "QQ 群聊",
+        footerCopyright: "© 2023 Lightの咖啡厅 - 一个充满温暖的避风港",
+        backToProfile: "返回个人主页"
+      },
+      en: {
+        pageTitle: "Light's Cafe",
+        welcome: "Welcome",
+        cafeSlogan: "A Warm Haven | Healing Cafe",
+        location: "A Corner in the Anime World",
+        openTime: "24h Always Welcome",
+        warmCare: "Full of Warmth and Care",
+        makeFriends: "Meet Like-minded Friends",
+        aboutCafe: "About Our Cafe",
+        intro1: "Welcome everyone to Yangyang's cafe!!!",
+        intro2: "If you feel uncomfortable, troubled, or helpless in the real world, you can always come to the cafe and talk to everyone!",
+        intro3: "If you're in a good mood, you can share daily life, games, or interesting things here!",
+        intro4: "After all... the cafe needs happy energy as fuel to absorb everyone's negative energy~",
+        intro5: "Yangyang is very nice~ (bragging) So if you have any questions or suggestions, you can talk to Yangyang directly www, and Yangyang will listen carefully~",
+        intro6: "Finally... welcome again to this cafe~ hehe..",
+        cafeFeatures: "Cafe Features",
+        sharingFeature: "Share & Express",
+        sharingDesc: "Share your joys and sorrows here",
+        gamingFeature: "Gaming Community",
+        gamingDesc: "Share gaming experiences and team up",
+        healingFeature: "Healing Space",
+        healingDesc: "Find warmth and healing, escape from reality",
+        joinUs: "Join Our Cafe",
+        joinDesc: "Whether you're looking for a place to talk, make new friends, or just relax, our cafe welcomes you!",
+        telegramChannel: "Telegram Channel",
+        qqGroup: "QQ Group",
+        footerCopyright: "© 2023 Light's Cafe - A Warm Haven",
+        backToProfile: "Back to Profile"
+      }
+    };
+    
+    // 语言切换功能
+    document.getElementById('zhBtn').addEventListener('click', () => setLanguage('zh'));
+    document.getElementById('enBtn').addEventListener('click', () => setLanguage('en'));
+    
+    function setLanguage(lang) {
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      
+      // 更新按钮样式
+      if (lang === 'zh') {
+        document.getElementById('zhBtn').classList.add('bg-primary', 'text-white');
+        document.getElementById('zhBtn').classList.remove('bg-white', 'text-primary');
+        document.getElementById('enBtn').classList.add('bg-white', 'text-primary');
+        document.getElementById('enBtn').classList.remove('bg-primary', 'text-white');
+      } else {
+        document.getElementById('enBtn').classList.add('bg-primary', 'text-white');
+        document.getElementById('enBtn').classList.remove('bg-white', 'text-primary');
+        document.getElementById('zhBtn').classList.add('bg-white', 'text-primary');
+        document.getElementById('zhBtn').classList.remove('bg-primary', 'text-white');
+      }
+      
+      // 设置页面标题
+      document.title = translations[lang].pageTitle;
+    }
+    
+    // 初始化语言设置
+    setLanguage('zh');
+  </script>
+</body>
+</html>
