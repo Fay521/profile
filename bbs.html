@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LightのBBS | Light's BBS</title>
+  <!-- 第三方库 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- 全局样式 -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Tailwind 配色（BBS专属） -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#7B61FF',
+            secondary: '#FF6B9B',
+            accent: '#FFC857',
+            dark: '#2A2A48',
+            light: '#F4F2FF'
+          },
+          fontFamily: {
+            nunito: ['Nunito', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+</head>
+
+<body class="font-nunito bg-light text-dark min-h-screen">
+  <!-- 语言切换按钮 -->
+  <div class="fixed top-6 right-6 z-50 flex gap-2">
+    <button id="zhBtn" class="px-4 py-2 rounded-full bg-primary text-white shadow-md hover:bg-primary/90 transition-all">中文</button>
+    <button id="enBtn" class="px-4 py-2 rounded-full bg-white text-primary shadow-md hover:bg-gray-100 transition-all">English</button>
+  </div>
+
+  <!-- 顶部装饰元素 -->
+  <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -mr-32 -mt-32 z-0"></div>
+  <div class="absolute top-20 left-10 w-32 h-32 bg-secondary/10 rounded-full z-0"></div>
+  
+  <div class="container mx-auto px-4 py-12 relative z-10">
+    <!-- 页面标题 -->
+    <header class="text-center mb-16">
+      <h1 class="text-[clamp(1.6rem,4vw,3rem)] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-4" data-i18n="pageTitle">
+        LightのBBS
+      </h1>
+      <div class="w-24 h-1 bg-accent mx-auto rounded-full"></div>
+    </header>
+    
+    <!-- 主要内容 -->
+    <main class="max-w-5xl mx-auto">
+      <!-- BBS介绍 -->
+      <section class="flex flex-col md:flex-row gap-8 mb-16 items-center">
+        <div class="relative">
+          <div class="w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-white shadow-xl animate-float">
+            <img src="./img/toxiang.png" alt="BBS Logo" class="w-full h-full object-cover">
+          </div>
+          <div class="absolute -bottom-3 -right-3 bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg animate-pulse-slow">
+            <i class="fa fa-comments text-lg"></i>
+          </div>
+        </div>
+        
+        <div class="text-center md:text-left">
+          <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-3" data-i18n="welcome">欢迎光临我的BBS</h2>
+          <p class="text-lg text-secondary mb-6" data-i18n="bbsSlogan">畅所欲言 | 分享与交流</p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div class="flex items-center gap-3">
+              <i class="fa fa-globe text-primary text-xl w-8"></i>
+              <span data-i18n="location">互联网的某个角落</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa fa-clock-o text-primary text-xl w-8"></i>
+              <span data-i18n="openTime">24h 随时欢迎光临</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa fa-users text-primary text-xl w-8"></i>
+              <span data-i18n="community">活跃的社区氛围</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa fa-smile-o text-primary text-xl w-8"></i>
+              <span data-i18n="makeFriends">结交志同道合的朋友</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 关于BBS -->
+      <section class="mb-16">
+        <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+          <h2 class="text-2xl font-bold mb-4 text-primary" data-i18n="aboutBBS">关于我们的BBS</h2>
+          <div class="space-y-4 text-gray-700">
+            <p data-i18n="intro1">欢迎各位来到Light的BBS论坛！这里是大家的自由天地~</p>
+            <p data-i18n="intro2">无论你是想来讨论技术、分享二次元文化、聊聊日常趣事，还是单纯想找个地方水水帖，这里都欢迎你！</p>
+            <p data-i18n="intro3">BBS是一个充满回忆的地方，在即时通讯盛行的今天，论坛式的交流反而更显珍贵——每一条帖子都会被保留，每一次讨论都有迹可循。</p>
+            <p data-i18n="intro4">我们鼓励大家畅所欲言，分享自己的想法和创作。无论是代码、绘画、音乐还是文字，你的每一份创作都值得被看见。</p>
+            <p data-i18n="intro5">社区的建设离不开每一个人的参与，如果有任何建议或想法，欢迎随时提出来~</p>
+            <p>
+              <span data-i18n="intro6">那么...就来注册一个账号，加入我们的讨论吧！期待在论坛上看到你的身影~</span>
+              <a href="https://bbs.liht.cc" target="_blank" rel="noopener" class="font-bold hover:underline" style="color: rgb(134, 114, 247);"><span data-i18n="goToCafe">点击前往咖啡厅</span></a>
+            </p>
+            
+          </div>
+        </div>
+      </section>
+      
+      <!-- 论坛板块 -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-bold mb-6 text-center" data-i18n="bbsFeatures">论坛板块</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <!-- 闲聊 -->
+          <a href="https://bbs.liht.cc/t/chat" target="_blank" rel="noopener" class="bg-white rounded-xl shadow-md p-4 card-hover block no-underline">
+            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+              <i class="fa fa-comments text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-center mb-2 text-dark" data-i18n="chatTitle">闲聊</h3>
+            <p class="text-gray-600 text-center" data-i18n="chatDesc">日常闲聊灌水，轻松愉快的交流空间</p>
+          </a>
+          
+          <!-- ACG -->
+          <a href="https://bbs.liht.cc/t/acg" target="_blank" rel="noopener" class="bg-white rounded-xl shadow-md p-4 card-hover block no-underline">
+            <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4 mx-auto">
+              <i class="fa fa-film text-secondary text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-center mb-2 text-dark" data-i18n="acgTitle">ACG</h3>
+            <p class="text-gray-600 text-center" data-i18n="acgDesc">动漫、游戏、轻小说，二次元文化讨论</p>
+          </a>
+          
+          <!-- 树洞 -->
+          <a href="https://bbs.liht.cc/t/SafeSpace" target="_blank" rel="noopener" class="bg-white rounded-xl shadow-md p-4 card-hover block no-underline">
+            <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4 mx-auto">
+              <i class="fa fa-tree text-accent text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-center mb-2 text-dark" data-i18n="safeSpaceTitle">树洞</h3>
+            <p class="text-gray-600 text-center" data-i18n="safeSpaceDesc">匿名倾诉，分享心底的秘密与烦恼</p>
+          </a>
+          
+          <!-- 时空留言板 -->
+          <a href="https://bbs.liht.cc/t/AgeCross" target="_blank" rel="noopener" class="bg-white rounded-xl shadow-md p-4 card-hover block no-underline">
+            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+              <i class="fa fa-clock-o text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-center mb-2 text-dark" data-i18n="ageCrossTitle">时空留言板</h3>
+            <p class="text-gray-600 text-center" data-i18n="ageCrossDesc">给未来的自己和他人留言</p>
+          </a>
+          
+          <!-- 相亲角 -->
+          <a href="https://bbs.liht.cc/t/love" target="_blank" rel="noopener" class="bg-white rounded-xl shadow-md p-4 card-hover block no-underline">
+            <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4 mx-auto">
+              <i class="fa fa-heart text-secondary text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-center mb-2 text-dark" data-i18n="loveTitle">相亲角</h3>
+            <p class="text-gray-600 text-center" data-i18n="loveDesc">寻找灵魂伴侣，浪漫邂逅</p>
+          </a>
+          
+          <!-- 游戏区 -->
+          <a href="https://bbs.liht.cc/t/Game" target="_blank" rel="noopener" class="bg-white rounded-xl shadow-md p-4 card-hover block no-underline">
+            <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4 mx-auto">
+              <i class="fa fa-gamepad text-accent text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-center mb-2 text-dark" data-i18n="gameTitle">游戏区</h3>
+            <p class="text-gray-600 text-center" data-i18n="gameDesc">讨论游戏攻略，组队开黑约战</p>
+          </a>
+        </div>
+      </section>
+      
+      <!-- 加入我们 -->
+      <section class="mb-16">
+        <div class="bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl p-8 text-center">
+          <h2 class="text-2xl font-bold mb-4" data-i18n="joinUs">加入我们的BBS</h2>
+          <p class="mb-6 max-w-2xl mx-auto" data-i18n="joinDesc">注册一个账号，成为我们社区的一员！分享你的想法，参与讨论，和店长一起建设这个温馨的论坛社区吧！！希望，能早日把这个咖啡厅的业务拓展到三次元~~</p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://bbs.liht.cc" target="_blank" rel="noopener" class="inline-block px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-all shadow-md">
+              <i class="fa fa-external-link mr-2"></i><span data-i18n="visitBBS">一键穿越至BBS</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="text-center text-gray-500 mt-20">
+      <p data-i18n="footerCopyright">© 2023 LightのBBS - 畅所欲言的自由天地</p>
+      <p class="mt-2">
+        <a href="index.html" class="text-primary hover:underline" data-i18n="backToProfile">返回个人主页</a>
+      </p>
+    </footer>
+  </div>
+  
+  <!-- 底部装饰元素 -->
+  <div class="fixed bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full -ml-32 -mb-32 z-0"></div>
+  
+  <!-- JavaScript -->
+  <script src="js/i18n-bbs.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>

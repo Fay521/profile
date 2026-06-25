@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Light的详情 | Light's Profile</title>
+  <!-- 第三方库 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- 全局样式 -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Tailwind 配色（首页专属） -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF6B9B',
+            secondary: '#7B61FF',
+            accent: '#FFC857',
+            dark: '#2A2A48',
+            light: '#F9F5FF'
+          },
+          fontFamily: {
+            nunito: ['Nunito', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+</head>
+
+<body class="font-nunito bg-light text-dark min-h-screen">
+  <!-- 语言切换按钮 -->
+  <div class="fixed top-6 right-6 z-50 flex gap-2">
+    <button id="zhBtn" class="px-4 py-2 rounded-full bg-primary text-white shadow-md hover:bg-primary/90 transition-all">中文</button>
+    <button id="enBtn" class="px-4 py-2 rounded-full bg-white text-primary shadow-md hover:bg-gray-100 transition-all">English</button>
+  </div>
+
+  <!-- 顶部装饰元素 -->
+  <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -mr-32 -mt-32 z-0"></div>
+  <div class="absolute top-20 left-10 w-32 h-32 bg-secondary/10 rounded-full z-0"></div>
+  
+  <div class="container mx-auto px-4 py-12 relative z-10">
+    <!-- 页面标题 -->
+    <header class="text-center mb-16">
+      <h1 class="text-[clamp(1.6rem,4vw,3rem)] font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-4" data-i18n="pageTitle">
+        个人资料
+      </h1>
+      <div class="w-24 h-1 bg-accent mx-auto rounded-full"></div>
+    </header>
+    
+    <!-- 主要内容 -->
+    <main class="max-w-5xl mx-auto">
+      <!-- 个人信息区域 -->
+      <section class="flex flex-col md:flex-row gap-8 mb-16 items-center">
+        <div class="relative">
+          <div class="w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-white shadow-xl animate-float">
+            <img src="./img/toxiang.png" alt="个人头像" class="w-full h-full object-cover">
+          </div>
+          <div class="absolute -bottom-3 -right-3 bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg animate-pulse-slow">
+            <i class="fa fa-star text-lg"></i>
+          </div>
+        </div>
+        
+        <div class="text-center md:text-left">
+          <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-3">Light</h2>
+          <p class="text-xl text-secondary mb-6" data-i18n="occupation">前端开发工程师 | 二次元爱好者</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div class="flex items-center gap-3">
+              <i class="fa fa-birthday-cake text-primary text-xl w-8"></i>
+              <span data-i18n="birthday">你猜</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa fa-map-marker text-primary text-xl w-8"></i>
+              <span data-i18n="location">上海市</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa fa-graduation-cap text-primary text-xl w-8"></i>
+              <span data-i18n="education">小学生</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa fa-envelope text-primary text-xl w-8"></i>
+              <span>kisslight.2233@gmail.com</span>
+            </div>
+          </div>
+          
+          <!-- 社交媒体链接 -->
+          <div class="flex justify-center md:justify-start gap-4">
+            <a href="https://x.com/Kiss_light233" class="w-10 h-10 rounded-full bg-[#1DA1F2]/10 flex items-center justify-center text-[#1DA1F2] hover:bg-[#1DA1F2] hover:text-white transition-all" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="https://github.com/Fay521" class="w-10 h-10 rounded-full bg-[#333]/10 flex items-center justify-center text-[#333] hover:bg-[#333] hover:text-white transition-all" title="GitHub">
+              <i class="fa fa-github"></i>
+            </a>
+            <a href="https://t.me/KissLight" class="w-10 h-10 rounded-full bg-[#0088cc]/10 flex items-center justify-center text-[#0088cc] hover:bg-[#0088cc] hover:text-white transition-all" title="Telegram">
+              <i class="fa fa-telegram"></i>
+            </a>
+            <a href="https://space.bilibili.com/1263726273?spm_id_from=333.6.0.0" class="w-10 h-10 rounded-full bg-[#FB7299]/10 flex items-center justify-center hover:bg-[#FB7299] transition-all" title="Bilibili">
+               <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/bilibili.svg" alt="Bilibili" class="w-5 h-5 text-[#FB7299] group-hover:text-white transition-colors">
+             </a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 关于我 -->
+      <section class="mb-20">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary">
+            <i class="fa fa-user"></i>
+          </div>
+          <h2 class="text-2xl font-bold" data-i18n="aboutMe">关于我</h2>
+        </div>
+        
+         <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+           <p class="mb-4" data-i18n="aboutPara1">大家好，我是light。正如我的名字一样，我希望像光一样，自由地穿梭在不同的次元与领域之间。</p>
+           <p class="mb-4" data-i18n="aboutPara2">作为一名MTF，我一直在探索与表达最真实的自我，就像二次元世界里那些打破常规、勇敢做自己的角色一样。</p>
+           <p class="mb-4" data-i18n="aboutPara3">我的生活离不开番剧与音乐——那些动人的故事和旋律总能给我带来力量与灵感。对一切新鲜事物，我都抱有强烈的好奇心，喜欢去尝试和学习未知的领域。</p>
+           <p data-i18n="aboutPara4">我相信每个人都能创造属于自己的精彩世界，而我正走在这条路上，期待与同样有趣的灵魂相遇。</p>
+         </div>
+      </section>
+      
+      <!-- 我的BBS -->
+      <section class="mb-20">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary">
+            <i class="fa fa-comments"></i>
+          </div>
+          <h2 class="text-2xl font-bold" data-i18n="myBBS">我的BBS</h2>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+          <div class="flex flex-col md:flex-row items-center gap-6 mb-4">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
+              <img src="./img/toxiang.png" alt="BBS Logo" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-secondary mb-2" data-i18n="bbsName">LightのBBS</h3>
+              <p class="text-gray-600 mb-4" data-i18n="bbsTagline">畅所欲言 | 分享与交流</p>
+              <a href="bbs.html" class="inline-block px-5 py-2 bg-gradient-to-r from-secondary to-primary text-white rounded-full font-bold hover:opacity-90 transition-all shadow-md">
+                <i class="fa fa-arrow-right mr-2"></i><span data-i18n="visitBBS">查看详情</span>
+              </a>
+            </div>
+          </div>
+          <p class="text-gray-700" data-i18n="bbsDescription">欢迎来到我的BBS论坛！这里是大家畅所欲言的地方，无论是技术讨论、二次元分享，还是日常闲聊，都可以在这里找到志同道合的伙伴。注册一个账号，加入我们的讨论吧！</p>
+        </div>
+      </section>
+      
+      <!-- 咖啡厅介绍 -->
+      <section class="mb-20">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">
+            <i class="fa fa-coffee"></i>
+          </div>
+          <h2 class="text-2xl font-bold" data-i18n="myCafe">我的咖啡厅</h2>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+          <div class="flex flex-col md:flex-row items-center gap-6 mb-4">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
+              <img src="./img/toxiang.png" alt="咖啡厅Logo" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-primary mb-2" data-i18n="cafeName">Lightの咖啡厅</h3>
+              <p class="text-gray-600 mb-4" data-i18n="cafeTagline">一个温暖的避风港 | 治愈系咖啡厅</p>
+              <a href="cafe.html" class="inline-block px-5 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-bold hover:opacity-90 transition-all shadow-md">
+                <i class="fa fa-arrow-right mr-2"></i><span data-i18n="visitCafe">查看详情</span>
+              </a>
+            </div>
+          </div>
+          <p class="text-gray-700" data-i18n="cafeDescription">欢迎来到我的咖啡厅！这是一个充满温暖与关怀的虚拟空间，无论你在三次元中遇到什么困难，这里都是你的避风港。来这里分享快乐，倾诉烦恼，或者只是放松一下，结交志同道合的朋友。</p>
+        </div>
+      </section>
+      
+      <!-- 技能和兴趣 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+        <!-- 技能 -->
+        <section>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+              <i class="fa fa-code"></i>
+            </div>
+            <h2 class="text-2xl font-bold" data-i18n="mySkills">我的技能</h2>
+          </div>
+          
+          <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+            <div class="space-y-5">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>HTML/CSS</span>
+                  <span>90%</span>
+                </div>
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 90%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>JavaScript</span>
+                  <span>85%</span>
+                </div>
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 85%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Java</span>
+                  <span>25%</span>
+                </div>
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 25%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Python</span>
+                  <span>20%</span>
+                </div>
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 20%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>unity</span>
+                  <span>15%</span>
+                </div>
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 15%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>UI/UX设计</span>
+                  <span>5%</span>
+                </div>
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 5%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>插画绘制</span>
+                  <span>3%</span>
+                </div>
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 3%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- 兴趣爱好 -->
+        <section>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">
+              <i class="fa fa-heart"></i>
+            </div>
+            <h2 class="text-2xl font-bold" data-i18n="hobbies">兴趣爱好</h2>
+          </div>
+          
+          <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="flex flex-col items-center p-4 rounded-xl bg-light">
+                <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                  <i class="fa fa-film text-primary text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-center" data-i18n="hobby1">动漫追剧</h3>
+              </div>
+              
+              <div class="flex flex-col items-center p-4 rounded-xl bg-light">
+                <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-3">
+                  <i class="fa fa-paint-brush text-secondary text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-center" data-i18n="hobby2">插画创作</h3>
+              </div>
+              
+              <div class="flex flex-col items-center p-4 rounded-xl bg-light">
+                <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-3">
+                  <i class="fa fa-gamepad text-accent text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-center" data-i18n="hobby3">游戏</h3>
+              </div>
+              
+              <div class="flex flex-col items-center p-4 rounded-xl bg-light">
+                <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                  <i class="fa fa-music text-primary text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-center" data-i18n="hobby4">音乐</h3>
+              </div>
+              
+              <div class="flex flex-col items-center p-4 rounded-xl bg-light">
+                <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-3">
+                  <i class="fa fa-book text-secondary text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-center" data-i18n="hobby5">漫画</h3>
+              </div>
+              
+              <div class="flex flex-col items-center p-4 rounded-xl bg-light">
+                <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-3">
+                  <i class="fa fa-camera text-accent text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-center" data-i18n="hobby6">摄影</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="mt-20 text-center text-gray-500 text-sm">
+      <div class="mb-4">
+        <div class="inline-block w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mb-4"></div>
+        <p data-i18n="footerThank">感谢访问我的个人主页</p>
+      </div>
+      <p data-i18n="footerRights">light的小窝 | 用代码创造美好</p>
+    </footer>
+  </div>
+  
+  <!-- 底部装饰元素 -->
+  <div class="absolute bottom-0 left-0 w-80 h-80 bg-secondary/10 rounded-full -ml-40 -mb-40 z-0"></div>
+  
+  <!-- 回到顶部按钮 -->
+  <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all z-50">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+  
+  <!-- JavaScript -->
+  <script src="js/i18n-index.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* ===================================================
+   Light's Profile - 全局共享样式
+   修改此文件可统一调整所有页面的外观
+   =================================================== */
+
+/* === 工具类 === */
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  .gradient-bg {
+    background: linear-gradient(135deg, #F9F5FF 0%, #E6E0FF 100%);
+  }
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(123, 97, 255, 0.15);
+  }
+}
+
+/* === 关键帧动画 === */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
