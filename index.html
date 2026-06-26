@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Light的详情 | Light's Profile</title>
-  <!-- 引入Tailwind CSS -->
+  <!-- 第三方库 -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- 引入Font Awesome -->
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <!-- 引入Google字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- 全局样式 -->
+  <link rel="stylesheet" href="css/style.css">
   
-  <!-- Tailwind配置 -->
+  <!-- Tailwind 配色（首页专属） -->
   <script>
     tailwind.config = {
       theme: {
@@ -30,39 +30,6 @@
       }
     }
   </script>
-  
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .content-auto {
-        content-visibility: auto;
-      }
-      .text-shadow {
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      }
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-      .animate-pulse-slow {
-        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-      }
-      .gradient-bg {
-        background: linear-gradient(135deg, #F9F5FF 0%, #E6E0FF 100%);
-      }
-      .card-hover {
-        transition: all 0.3s ease;
-      }
-      .card-hover:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(123, 97, 255, 0.15);
-      }
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
-  </style>
 </head>
 
 <body class="font-nunito bg-light text-dark min-h-screen">
@@ -89,18 +56,15 @@
     <main class="max-w-5xl mx-auto">
       <!-- 个人信息区域 -->
       <section class="flex flex-col md:flex-row gap-8 mb-16 items-center">
-        <!-- 头像 -->
         <div class="relative">
           <div class="w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-white shadow-xl animate-float">
             <img src="./img/toxiang.png" alt="个人头像" class="w-full h-full object-cover">
           </div>
-          <!-- 二次元装饰元素 -->
           <div class="absolute -bottom-3 -right-3 bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg animate-pulse-slow">
             <i class="fa fa-star text-lg"></i>
           </div>
         </div>
         
-        <!-- 基本信息 -->
         <div class="text-center md:text-left">
           <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-3">Light</h2>
           <p class="text-xl text-secondary mb-6" data-i18n="occupation">前端开发工程师 | 二次元爱好者</p>
@@ -126,20 +90,15 @@
           
           <!-- 社交媒体链接 -->
           <div class="flex justify-center md:justify-start gap-4">
-            <!-- 推特 -->
             <a href="https://x.com/Kiss_light233" class="w-10 h-10 rounded-full bg-[#1DA1F2]/10 flex items-center justify-center text-[#1DA1F2] hover:bg-[#1DA1F2] hover:text-white transition-all" title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
-           
-            <!-- GitHub -->
             <a href="https://github.com/Fay521" class="w-10 h-10 rounded-full bg-[#333]/10 flex items-center justify-center text-[#333] hover:bg-[#333] hover:text-white transition-all" title="GitHub">
               <i class="fa fa-github"></i>
             </a>
-            <!-- Telegram -->
             <a href="https://t.me/KissLight" class="w-10 h-10 rounded-full bg-[#0088cc]/10 flex items-center justify-center text-[#0088cc] hover:bg-[#0088cc] hover:text-white transition-all" title="Telegram">
               <i class="fa fa-telegram"></i>
             </a>
-            <!-- Bilibili -->
             <a href="https://space.bilibili.com/1263726273?spm_id_from=333.6.0.0" class="w-10 h-10 rounded-full bg-[#FB7299]/10 flex items-center justify-center hover:bg-[#FB7299] transition-all" title="Bilibili">
                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/bilibili.svg" alt="Bilibili" class="w-5 h-5 text-[#FB7299] group-hover:text-white transition-colors">
              </a>
@@ -164,6 +123,32 @@
          </div>
       </section>
       
+      <!-- 我的BBS -->
+      <section class="mb-20">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary">
+            <i class="fa fa-comments"></i>
+          </div>
+          <h2 class="text-2xl font-bold" data-i18n="myBBS">我的BBS</h2>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+          <div class="flex flex-col md:flex-row items-center gap-6 mb-4">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
+              <img src="./img/toxiang.png" alt="BBS Logo" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-secondary mb-2" data-i18n="bbsName">LightのBBS</h3>
+              <p class="text-gray-600 mb-4" data-i18n="bbsTagline">畅所欲言 | 分享与交流</p>
+              <a href="bbs.html" class="inline-block px-5 py-2 bg-gradient-to-r from-secondary to-primary text-white rounded-full font-bold hover:opacity-90 transition-all shadow-md">
+                <i class="fa fa-arrow-right mr-2"></i><span data-i18n="visitBBS">查看详情</span>
+              </a>
+            </div>
+          </div>
+          <p class="text-gray-700" data-i18n="bbsDescription">欢迎来到我的BBS论坛！这里是大家畅所欲言的地方，无论是技术讨论、二次元分享，还是日常闲聊，都可以在这里找到志同道合的伙伴。注册一个账号，加入我们的讨论吧！</p>
+        </div>
+      </section>
+      
       <!-- 咖啡厅介绍 -->
       <section class="mb-20">
         <div class="flex items-center gap-3 mb-6">
@@ -182,7 +167,7 @@
               <h3 class="text-xl font-bold text-primary mb-2" data-i18n="cafeName">Lightの咖啡厅</h3>
               <p class="text-gray-600 mb-4" data-i18n="cafeTagline">一个温暖的避风港 | 治愈系咖啡厅</p>
               <a href="cafe.html" class="inline-block px-5 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-bold hover:opacity-90 transition-all shadow-md">
-                <i class="fa fa-arrow-right mr-2"></i><span data-i18n="visitCafe">访问咖啡厅</span>
+                <i class="fa fa-arrow-right mr-2"></i><span data-i18n="visitCafe">查看详情</span>
               </a>
             </div>
           </div>
@@ -223,6 +208,26 @@
                 </div>
               </div>
               
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Java</span>
+                  <span>25%</span>
+                </div>
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 25%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Python</span>
+                  <span>20%</span>
+                </div>
+                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-primary to-secondary" style="width: 20%"></div>
+                </div>
+              </div>
+
               <div>
                 <div class="flex justify-between mb-1">
                   <span>unity</span>
@@ -333,124 +338,9 @@
     <i class="fa fa-arrow-up"></i>
   </button>
   
-  <script>
-    // 语言切换功能
-    const translations = {
-      en: {
-        pageTitle: "Personal Profile",
-        occupation: "Frontend Developer | Anime Enthusiast",
-        birthday: "Guess",
-        location: "Shanghai",
-        education: "Elementary Student",
-        aboutMe: "About Me",
-        aboutPara1: "Hello everyone, I'm Light. Just like my name, I hope to move freely between different dimensions and fields like light.",
-        aboutPara2: "As an MTF, I've been exploring and expressing my true self, much like those characters in the anime world who break conventions and bravely be themselves.",
-        aboutPara3: "My life revolves around anime and music — those touching stories and melodies always bring me strength and inspiration. I have a strong curiosity about all new things and love to explore and learn unknown fields.",
-        aboutPara4: "I believe everyone can create their own wonderful world, and I'm on this journey, looking forward to meeting similarly interesting souls.",
-        myCafe: "My Cafe",
-        cafeName: "Light's Cafe",
-        cafeTagline: "A warm haven | Healing Cafe",
-        cafeDescription: "Welcome to my cafe! This is a virtual space full of warmth and care. No matter what difficulties you encounter in the real world, this is your haven. Come here to share happiness, talk about your troubles, or just relax and make like-minded friends.",
-        visitCafe: "Visit Cafe",
-        mySkills: "My Skills",
-        hobbies: "Hobbies",
-        hobby1: "Watching Anime",
-        hobby2: "Illustration",
-        hobby3: "Gaming",
-        hobby4: "Music",
-        hobby5: "Comics",
-        hobby6: "Photography",
-        footerThank: "Thank you for visiting my profile",
-        footerRights: "Light's Little Nest | Creating beauty with code"
-      },
-      zh: {
-        pageTitle: "个人资料",
-        occupation: "前端开发工程师 | 二次元爱好者",
-        birthday: "你猜",
-        location: "上海市",
-        education: "小学生",
-        aboutMe: "关于我",
-        aboutPara1: "大家好，我是light。正如我的名字一样，我希望像光一样，自由地穿梭在不同的次元与领域之间。",
-        aboutPara2: "作为一名MTF，我一直在探索与表达最真实的自我，就像二次元世界里那些打破常规、勇敢做自己的角色一样。",
-        aboutPara3: "我的生活离不开番剧与音乐——那些动人的故事和旋律总能给我带来力量与灵感。对一切新鲜事物，我都抱有强烈的好奇心，喜欢去尝试和学习未知的领域。",
-        aboutPara4: "我相信每个人都能创造属于自己的精彩世界，而我正走在这条路上，期待与同样有趣的灵魂相遇。",
-        myCafe: "我的咖啡厅",
-        cafeName: "Lightの咖啡厅",
-        cafeTagline: "一个温暖的避风港 | 治愈系咖啡厅",
-        cafeDescription: "欢迎来到我的咖啡厅！这是一个充满温暖与关怀的虚拟空间，无论你在三次元中遇到什么困难，这里都是你的避风港。来这里分享快乐，倾诉烦恼，或者只是放松一下，结交志同道合的朋友。",
-        visitCafe: "访问咖啡厅",
-        mySkills: "我的技能",
-        hobbies: "兴趣爱好",
-        hobby1: "动漫追剧",
-        hobby2: "插画创作",
-        hobby3: "游戏",
-        hobby4: "音乐",
-        hobby5: "漫画",
-        hobby6: "摄影",
-        footerThank: "感谢访问我的个人主页",
-        footerRights: "light的小窝 | 用代码创造美好"
-      }
-    };
-
-    // 切换语言函数
-    function setLanguage(lang) {
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-          element.textContent = translations[lang][key];
-        }
-      });
-      
-      // 更新按钮样式
-      if (lang === 'en') {
-        document.getElementById('enBtn').classList.add('bg-primary', 'text-white');
-        document.getElementById('enBtn').classList.remove('bg-white', 'text-primary');
-        document.getElementById('zhBtn').classList.add('bg-white', 'text-primary');
-        document.getElementById('zhBtn').classList.remove('bg-primary', 'text-white');
-      } else {
-        document.getElementById('zhBtn').classList.add('bg-primary', 'text-white');
-        document.getElementById('zhBtn').classList.remove('bg-white', 'text-primary');
-        document.getElementById('enBtn').classList.add('bg-white', 'text-primary');
-        document.getElementById('enBtn').classList.remove('bg-primary', 'text-white');
-      }
-    }
-
-    // 语言按钮事件监听
-    document.getElementById('enBtn').addEventListener('click', () => setLanguage('en'));
-    document.getElementById('zhBtn').addEventListener('click', () => setLanguage('zh'));
-
-    // 回到顶部按钮
-    const backToTopBtn = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopBtn.classList.remove('opacity-0', 'invisible');
-        backToTopBtn.classList.add('opacity-100', 'visible');
-      } else {
-        backToTopBtn.classList.remove('opacity-100', 'visible');
-        backToTopBtn.classList.add('opacity-0', 'invisible');
-      }
-    });
-    
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-    
-    // 平滑滚动
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId !== '#') {
-          document.querySelector(targetId).scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  </script>
+  <!-- JavaScript -->
+  <script src="js/i18n-index.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
