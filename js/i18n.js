@@ -13,7 +13,7 @@
     elements.forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       if (window.TRANSLATIONS && window.TRANSLATIONS[lang] && window.TRANSLATIONS[lang][key]) {
-        el.textContent = window.TRANSLATIONS[lang][key];
+        el.innerHTML = window.TRANSLATIONS[lang][key];
       }
     });
 
